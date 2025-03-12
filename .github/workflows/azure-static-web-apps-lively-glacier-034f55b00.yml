@@ -29,6 +29,10 @@ jobs:
       - name: Create environment.ts from Github Secret
         run: |
           echo "${{ secrets.ANGULAR_ENV}}" > src/environments/environment.ts
+      - name: Build Angular App
+        run: npm run build -- --prod
+      - name: Verify Build Output
+        run: ls -la dist/synapxe-trailblazer
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
