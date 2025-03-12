@@ -29,22 +29,6 @@ jobs:
       - name: Create environment.ts from Github Secret
         run: |
           echo "${{ secrets.ANGULAR_ENV}}" > src/environments/environment.ts
-      # # Ensure dependencies are installed
-      # - name: Install Dependencies
-      #   run: npm ci # This ensures a clean installation based on package-lock.json
-
-      # # Install Angular CLI if not found
-      # - name: Install Angular CLI
-      #   run: npm install -g @angular/cli
-
-      # # Verify if node_modules exists (debugging step)
-      # - name: Check Installed Packages
-      #   run: ls -la node_modules
-
-      # - name: Build Angular App
-      #   run: npm run build
-      # - name: Verify Build Output
-      #   run: ls -la dist/synapxe-trailblazer
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
