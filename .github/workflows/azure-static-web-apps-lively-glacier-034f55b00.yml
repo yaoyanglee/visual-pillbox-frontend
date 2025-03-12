@@ -29,8 +29,18 @@ jobs:
       - name: Create environment.ts from Github Secret
         run: |
           echo "${{ secrets.ANGULAR_ENV}}" > src/environments/environment.ts
+      # Ensure dependencies are installed
+      - name: Install Dependencies
+        run: npm ci # This ensures a clean installation based on package-lock.json
+
+      # Install Angular CLI if not found
       - name: Install Angular CLI
         run: npm install -g @angular/cli
+
+      # Verify if node_modules exists (debugging step)
+      - name: Check Installed Packages
+        run: ls -la node_modules
+
       - name: Build Angular App
         run: npm run build -- --prod
       - name: Verify Build Output
