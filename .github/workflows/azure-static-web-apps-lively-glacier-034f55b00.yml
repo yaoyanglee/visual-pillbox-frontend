@@ -37,12 +37,12 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
-      # Verify if node_modules exists (debugging step)
-      - name: Check Installed Packages
-        run: ls -la node_modules
+      # # Verify if node_modules exists (debugging step)
+      # - name: Check Installed Packages
+      #   run: ls -la node_modules
 
-      - name: Build Angular App
-        run: npm run build -- --prod
+      # - name: Build Angular App
+      #   run: npm run build -- --prod
       - name: Verify Build Output
         run: ls -la dist/synapxe-trailblazer
       - name: Install OIDC Client from Core Package
