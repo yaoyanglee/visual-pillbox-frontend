@@ -37,14 +37,14 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
-      # # Verify if node_modules exists (debugging step)
-      # - name: Check Installed Packages
-      #   run: ls -la node_modules
+      # Verify if node_modules exists (debugging step)
+      - name: Check Installed Packages
+        run: ls -la node_modules
 
-      # - name: Build Angular App
-      #   run: npm run build -- --prod
-      # - name: Verify Build Output
-      #   run: ls -la dist/synapxe-trailblazer
+      - name: Build Angular App
+        run: npm run build -- --prod
+      - name: Verify Build Output
+        run: ls -la dist/synapxe-trailblazer
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
@@ -67,6 +67,7 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "dist/synapxe-trailblazer" # Built app content directory - optional
           github_id_token: ${{ steps.idtoken.outputs.result }}
+          skip_app_build: true
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
